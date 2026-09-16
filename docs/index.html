@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power BI Learning Library — Start Here</title>
+  <link rel="stylesheet" href="assets/power-bi-prototype.css">
+</head>
+<body>
+<div class="library-shell">
+  <aside class="rail">
+    <a class="rail-mark" href="index.html" aria-label="Power BI Learning Library home">
+      <span class="monogram" aria-hidden="true">PBI</span>
+      <span><strong>Power BI</strong><small>Learning Library</small></span>
+    </a>
+    <div>
+      <p class="rail-label">Prototype route</p>
+      <nav aria-label="Power BI learning route">
+        <a href="index.html" aria-current="page">Start here<span>Truth gate</span></a>
+        <a href="01-import-and-profile.html">01 · Import<span>Profile first</span></a>
+        <a href="02-clean-and-standardise.html">02 · Clean<span>Make rules visible</span></a>
+        <a href="03-handle-outliers.html">03 · Outliers<span>Investigate first</span></a>
+        <a href="04-basic-visuals.html">04 · Visuals<span>Question to chart</span></a>
+        <a href="05-data-model.html">05 · Model<span>Grain and links</span></a>
+        <a href="06-report.html">06 · Report<span>Evidence page</span></a>
+        <a href="07-share-and-tell-a-story.html">07 · Share<span>Audience and story</span></a>
+      </nav>
+    </div>
+    <div class="rail-spacer"></div>
+    <a class="signature" href="https://github.com/TidyWeb/" target="_blank" rel="noreferrer">
+      <img src="assets/tidyweb_logo.png" alt="TidyWeb">
+      <span><strong>TidyWeb</strong>Power BI learning prototype</span>
+    </a>
+  </aside>
+
+  <main class="main"><div class="page">
+    <header class="hero">
+      <p class="eyebrow">START HERE / BEFORE YOU BUILD A CHART</p>
+      <h1>Power BI begins before the chart.</h1>
+      <p class="lede">A client asks for help. You receive one or more data files. They may be tidy, messy or incomplete. Before you build a chart, find out what the files contain and what they can honestly tell you.</p>
+      <div class="badge-row"><span class="gate-badge">START HERE</span><span class="env-badge">ORIENTATION</span></div>
+    </header>
+
+    <p class="intro">This library takes you through the work in order: understand the request, inspect the files, clean the values, connect the tables, build the calculations and make the charts. The files and the question may change; the way you check your work stays the same.</p>
+
+    <figure class="pipeline">
+      <svg viewBox="0 0 980 180" role="img" aria-labelledby="pipeline-title pipeline-desc">
+        <title id="pipeline-title">The Power BI work route</title>
+        <desc id="pipeline-desc">A left-to-right route from a client request through files, checks, cleaning, table links, calculations and charts to a report for a reader.</desc>
+        <g font-family="system-ui, sans-serif" text-anchor="middle">
+          <g fill="#ffffff" stroke="#118dff" stroke-width="2">
+            <rect x="10" y="48" width="105" height="58" rx="8"/><rect x="145" y="48" width="105" height="58" rx="8"/>
+            <rect x="280" y="48" width="105" height="58" rx="8"/><rect x="415" y="48" width="105" height="58" rx="8"/>
+            <rect x="550" y="48" width="105" height="58" rx="8"/><rect x="685" y="48" width="105" height="58" rx="8"/>
+            <rect x="820" y="48" width="145" height="58" rx="8"/>
+          </g>
+          <g fill="#252423" font-size="13" font-weight="700">
+            <text x="62" y="73">BRIEF</text><text x="62" y="92">need / decision</text>
+            <text x="197" y="73">FILES</text><text x="197" y="92">what arrived?</text>
+            <text x="332" y="73">CHECK</text><text x="332" y="92">what is in them?</text>
+            <text x="467" y="73">CLEAN</text><text x="467" y="92">fix known problems</text>
+            <text x="602" y="73">LINK</text><text x="602" y="92">rows match?</text>
+            <text x="737" y="73">CALCULATE</text><text x="737" y="92">combine values</text>
+            <text x="892" y="73">CHART → READER</text><text x="892" y="92">show the answer</text>
+          </g>
+          <g fill="none" stroke="#118dff" stroke-width="2">
+            <path d="M115 77h22m-7-6 7 6-7 6M250 77h22m-7-6 7 6-7 6M385 77h22m-7-6 7 6-7 6M520 77h22m-7-6 7 6-7 6M655 77h22m-7-6 7 6-7 6M790 77h22m-7-6 7 6-7 6"/>
+          </g>
+          <text x="487" y="144" fill="#6e5600" font-size="13" font-weight="700">AT EACH STEP: CHECK BEFORE YOU MOVE ON</text>
+        </g>
+      </svg>
+      <figcaption class="caption">The order matters. If a later step exposes a problem, go back and fix it before carrying on.</figcaption>
+    </figure>
+
+    <h2>What does one row actually mean?</h2>
+    <p class="intro">Every table has many columns. When we ask “what does one row describe?”, we are not asking you to list every column. We are asking what the row is mainly about. The other columns give details about that one record.</p>
+    <div class="grid two">
+      <article class="card model">
+        <h3>Read one Sales row</h3>
+        <div class="table-wrap"><table class="ledger"><thead><tr><th>Store</th><th>Dept</th><th>Date</th><th>Weekly_Sales</th><th>IsHoliday</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>05/02/2010</td><td>24,924.50</td><td>FALSE</td></tr></tbody></table></div>
+        <p><strong>This row is about:</strong> the sales for Department 1 in Store 1 for the week ending 5 February 2010.</p>
+        <p class="muted"><code>Weekly_Sales</code> and <code>IsHoliday</code> are important. They describe this sales record. They are not part of the short phrase that identifies which record it is.</p>
+      </article>
+      <article class="card">
+        <h3>Use a short sentence</h3>
+        <p><strong>Sales:</strong> one row tells us about one department in one store for one week.</p>
+        <p><strong>Features:</strong> one row tells us about one store on one date. The other columns describe conditions such as temperature, fuel price and markdowns.</p>
+        <p><strong>Stores:</strong> one row tells us about one store. The other columns describe it, such as its type and size.</p>
+        <div class="good-note"><strong>Why this matters:</strong> before you add values or link tables, know what each row is about. Otherwise Power BI can count the same value more than once.</div>
+      </article>
+    </div>
+
+    <h2>Keep these five parts separate</h2>
+    <div class="grid five grid five">
+      <article class="card family-card"><div class="symbol">1</div><h3>The request</h3><p>What the client wants to know or decide.</p></article>
+      <article class="card family-card"><div class="symbol">2</div><h3>The question</h3><p>The more exact question you can ask after looking at the files.</p></article>
+      <article class="card family-card"><div class="symbol">3</div><h3>The result</h3><p>What the prepared data actually shows.</p></article>
+      <article class="card family-card"><div class="symbol">4</div><h3>Your explanation</h3><p>What you think the result might mean.</p></article>
+      <article class="card family-card"><div class="symbol">5</div><h3>The next step</h3><p>What someone can reasonably do or investigate next.</p></article>
+    </div>
+
+    <h2>The first four checks</h2>
+    <div class="grid four">
+      <article class="card"><div class="symbol">B</div><h3>Understand the request</h3><p>What does the client need to know, decide or monitor?</p></article>
+      <article class="card"><div class="symbol">S</div><h3>Check the files</h3><p>What files arrived, where did they come from and what do they cover?</p></article>
+      <article class="card"><div class="symbol">P</div><h3>Check the columns</h3><p>What type of value is in each column? Which values are empty, repeated or wrong?</p></article>
+      <article class="card warning"><div class="symbol">!</div><h3>Stop if you are unsure</h3><p>Do not build a chart until you can explain what its numbers mean.</p></article>
+    </div>
+
+    <h2>How to work through every page</h2>
+    <div class="grid two">
+      <div class="card"><h3>For each task</h3><ol class="route-list"><li><strong>Look</strong> at what is actually there.</li><li><strong>Decide</strong> what it means.</li><li><strong>Change</strong> it for a stated reason.</li><li><strong>Check</strong> that the result is still right.</li></ol></div>
+      <div class="card"><h3>If a result looks wrong</h3><p>Stop and go back to the last step you can no longer explain: the file, the values, the cleaning step, the table link or the calculation.</p><div class="good-note"><strong>Keep this in mind:</strong> a chart is only as good as the checks behind it.</div></div>
+    </div>
+
+    <h2>Code Institute exercise files</h2>
+    <p class="intro">Before you open Power BI, find the project file and the three original CSV files. You will import these files, check them, clean them and build the report from them.</p>
+    <div class="grid two">
+      <article class="card model">
+        <h3>Start with the project file</h3>
+        <p><a href="../RetailDashboard.pbix">RetailDashboard.pbix</a> is the Power BI Desktop file for this exercise. Open it when you are ready to import the three CSV files.</p>
+        <p class="muted"><a href="https://lms.codeinstitute.net/learner_quiz_assessment/show/1189775" target="_blank" rel="noreferrer">Open the Code Institute LMS exercise</a> for the original exercise sequence.</p>
+        <div class="result"><strong>Start with the original CSV files.</strong> Leave the copies with <code>cleaned</code> in their names alone for now. You can look at them later to compare your work. If you start with them, you skip the cleaning practice.</div>
+      </article>
+      <article class="card">
+        <h3>Find these three original CSV files</h3>
+        <ul class="route-list">
+          <li><a href="../Features%20data%20set.csv">Features data set.csv</a></li>
+          <li><a href="../sales%20data-set.csv">sales data-set.csv</a></li>
+          <li><a href="../stores%20data-set.csv">stores data-set.csv</a></li>
+        </ul>
+        <p class="muted">These links open the files supplied with the project.</p>
+      </article>
+    </div>
+    <div class="notice"><strong>How to use this library:</strong> each page explains an idea first. Near the bottom, the <strong>Code Institute exercise</strong> section tells you exactly which table, column or file to use in Power BI.</div>
+
+    <details class="answer-check"><summary>Try it with the three project files</summary><div><p>Use the explanation above. For each file, write one sentence about what a row is about. Include the columns that identify the record, not every detail column.</p><ol class="route-list"><li><strong>Sales:</strong> one department in one store for one week/date. <code>Weekly_Sales</code> is the amount for that record.</li><li><strong>Features:</strong> one store on one date. The other columns describe the conditions for that store and date.</li><li><strong>Stores:</strong> one store. <code>Type</code> and <code>Size</code> describe that store.</li><li>Leave the files with <code>cleaned</code> in their names alone for now. Use them later to compare your result.</li><li>Open <a href="../RetailDashboard.pbix">RetailDashboard.pbix</a>. The next page shows you how to import the original CSV files.</li></ol></div></details>
+
+    <h2>Follow the full route</h2>
+    <div class="grid four">
+      <article class="card"><h3><a href="01-import-and-profile.html">01 · Import and Profile</a></h3><p>Find out what arrived and what one row means.</p></article>
+      <article class="card"><h3><a href="02-clean-and-standardise.html">02 · Clean and Standardise</a></h3><p>Fix values and write down what you changed.</p></article>
+      <article class="card"><h3><a href="03-handle-outliers.html">03 · Handle Outliers</a></h3><p>Investigate suspicious values before writing rules.</p></article>
+      <article class="card"><h3><a href="04-basic-visuals.html">04 · Basic Visuals</a></h3><p>Match the question to a chart and calculation.</p></article>
+      <article class="card"><h3><a href="05-data-model.html">05 · Data Model</a></h3><p>Join tables only when you know which rows match.</p></article>
+      <article class="card"><h3><a href="06-report.html">06 · Report</a></h3><p>Put the numbers and charts in an order a reader can follow.</p></article>
+      <article class="card"><h3><a href="07-share-and-tell-a-story.html">07 · Share and Tell a Story</a></h3><p>Publish the report and check who can use it.</p></article>
+    </div>
+
+    <div class="next"><span>Full route: Start here</span><a href="01-import-and-profile.html">Next: Import and Profile →</a></div>
+    <footer>Prototype teaching route · Original diagrams and symbols · <a href="https://learn.microsoft.com/en-us/power-query/" target="_blank" rel="noreferrer">Power Query documentation</a> · <a href="https://www.blog.datawithbaraa.com/p/the-complete-introduction-to-power" target="_blank" rel="noreferrer">Data with Baraa: Power BI introduction</a></footer>
+  </div></main>
+</div>
+</body>
+</html>

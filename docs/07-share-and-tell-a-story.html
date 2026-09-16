@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power BI Learning Library — Share and Tell a Story</title>
+<link rel="stylesheet" href="assets/power-bi-prototype.css">
+</head>
+<body>
+<div class="library-shell">
+<aside class="rail">
+<a class="rail-mark" href="index.html" aria-label="Power BI Learning Library home">
+<span class="monogram" aria-hidden="true">PBI</span>
+<span>
+<strong>Power BI</strong>
+<small>Learning Library</small>
+</span>
+</a>
+<div>
+<p class="rail-label">Learning route</p>
+<nav aria-label="Power BI learning route">
+<a href="index.html">Start here<span>Truth gate</span>
+</a>
+<a href="01-import-and-profile.html">01 · Import<span>Profile first</span>
+</a>
+<a href="02-clean-and-standardise.html">02 · Clean<span>Make rules visible</span>
+</a>
+<a href="03-handle-outliers.html">03 · Outliers<span>Investigate first</span>
+</a>
+<a href="04-basic-visuals.html">04 · Visuals<span>Question to chart</span>
+</a>
+<a href="05-data-model.html">05 · Model<span>Grain and links</span>
+</a>
+<a href="06-report.html">06 · Report<span>Evidence page</span>
+</a>
+<a href="07-share-and-tell-a-story.html" aria-current="page">07 · Share<span>Audience and story</span>
+</a>
+</nav>
+</div>
+<div class="rail-spacer">
+</div>
+<a class="signature" href="https://github.com/TidyWeb/" target="_blank" rel="noreferrer">
+<img src="assets/tidyweb_logo.png" alt="TidyWeb">
+<span>
+<strong>TidyWeb</strong>Power BI learning prototype</span>
+</a>
+</aside>
+<main class="main">
+<div class="page">
+<header class="hero">
+<p class="eyebrow">07 / SHARE AND TELL A STORY</p>
+<h1>Publishing the report changes who can use it.</h1>
+<p class="lede">After you publish, other people may read, change, reuse or share the report. Check the file, the refresh and the permissions before you hand it over.</p>
+<div class="badge-row">
+<span class="env-badge">DESKTOP → SERVICE</span>
+<span class="gate-badge">PUBLISH</span>
+<span class="gate-badge">CHECK ACCESS</span>
+</div>
+</header>
+<p class="intro">A report can be correct in Desktop and still go wrong after publishing. Refresh may fail, a link may reach the wrong people or a bookmark may hide useful context. Check the report and who can use it.</p>
+<h2>From your PBIX file to another person</h2>
+<figure class="pipeline">
+<svg viewBox="0 0 980 180" role="img" aria-labelledby="share-title share-desc">
+<title id="share-title">Power BI publishing route</title>
+<desc id="share-desc">A local PBIX report moves to a workspace, then through permissions to a reader. Check each step.</desc>
+<g font-family="system-ui, sans-serif" text-anchor="middle">
+<g fill="#ffffff" stroke="#118dff" stroke-width="2">
+<rect x="28" y="48" width="170" height="58" rx="8"/>
+<rect x="260" y="48" width="170" height="58" rx="8"/>
+<rect x="492" y="48" width="170" height="58" rx="8"/>
+<rect x="724" y="48" width="220" height="58" rx="8"/>
+</g>
+<g fill="#252423" font-size="14" font-weight="700">
+<text x="113" y="72">LOCAL .PBIX</text>
+<text x="113" y="91">validated report</text>
+<text x="345" y="72">WORKSPACE</text>
+<text x="345" y="91">owner</text>
+<text x="577" y="72">PERMISSIONS</text>
+<text x="577" y="91">view / edit / Build</text>
+<text x="834" y="72">AUDIENCE</text>
+<text x="834" y="91">reader + refresh</text>
+</g>
+<g fill="none" stroke="#118dff" stroke-width="2">
+<path d="M198 77h54m-8-7 8 7-8 7M430 77h54m-8-7 8 7-8 7M662 77h54m-8-7 8 7-8 7"/>
+</g>
+<text x="485" y="145" fill="#6e5600" font-size="13" font-weight="700">CHECK WHO CAN USE IT AND WHETHER REFRESH WORKS</text>
+</g>
+</svg>
+<figcaption class="caption">Power BI Service adds people, permissions and refresh. Check those separately.</figcaption>
+</figure>
+<h2>Permission is not one thing</h2>
+<div class="grid four">
+<article class="card">
+<div class="symbol">V</div>
+<h3>View</h3>
+<p>Read the report.</p>
+</article>
+<article class="card">
+<div class="symbol">E</div>
+<h3>Edit</h3>
+<p>Change the report.</p>
+</article>
+<article class="card">
+<div class="symbol">B</div>
+<h3>Build</h3>
+<p>Make new reports from the tables behind it.</p>
+</article>
+<article class="card warning">
+<div class="symbol">R</div>
+<h3>Reshare</h3>
+<p>Give the report to someone else.</p>
+</article>
+</div>
+<h2>Publish it, then check it</h2>
+<div class="grid two">
+<article class="card">
+<div class="step">
+<span class="step-number">1</span>
+<div>
+<h3>Check the local report</h3>
+<p>Check refresh, page titles, filters, numbers, limits and bookmarks before publishing.</p>
+<div class="result">
+<strong>You should see:</strong> a report ready for someone else to review.</div>
+<div class="why">
+<strong>Why:</strong> publishing gives the report a new audience, so check it before it leaves Desktop.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">2</span>
+<div>
+<h3>Choose the workspace</h3>
+<p>Write down the workspace and owner. The LMS may use My workspace as an example.</p>
+<div class="result">
+<strong>You should see:</strong> a named destination and an identified owner.</div>
+<div class="why">
+<strong>Why:</strong> someone must know where the report lives and who maintains it.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">3</span>
+<div>
+<h3>Publish from Desktop</h3>
+<p>Save the report, choose <strong>File → Publish → Publish to Power BI</strong>, and select the approved workspace.</p>
+<div class="result">
+<strong>You should see:</strong> the report and its data in the selected workspace.</div>
+<div class="why">
+<strong>Why:</strong> the Service has its own access and refresh settings.</div>
+</div>
+</div>
+</article>
+<article class="card">
+<div class="step">
+<span class="step-number">4</span>
+<div>
+<h3>Check settings and refresh</h3>
+<p>Check the source credentials, refresh schedule, owner and people who should see the report.</p>
+<div class="result">
+<strong>You should see:</strong> a clear answer to “when will this data update?”</div>
+<div class="why">
+<strong>Why:</strong> a refresh that cannot sign in leaves the report out of date.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">5</span>
+<div>
+<h3>Help the reader follow the page</h3>
+<p>Use bookmarks, page navigation and short notes to move from the overview to the evidence and the next question.</p>
+<div class="result">
+<strong>You should see:</strong> a reader can move through the report without guessing.</div>
+<div class="why">
+<strong>Why:</strong> a bookmark saves a view; it does not prove that the view is typical or that one thing caused another.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">6</span>
+<div>
+<h3>Test with a reader</h3>
+<p>Ask someone who did not build the report to say the question, dates, number, evidence and limit.</p>
+<div class="result">
+<strong>You should see:</strong> the reader can explain what the report supports without author translation.</div>
+<div class="why">
+<strong>Why:</strong> the report works when another person can understand it.</div>
+</div>
+</div>
+</article>
+</div>
+<h2>Check it again after publishing</h2>
+<div class="grid three">
+<article class="card">
+<h3>Numbers</h3>
+<p>Totals, peaks, medians and filters still work as defined.</p>
+</article>
+<article class="card">
+<h3>Story</h3>
+<p>Notes and bookmarks still match the current data.</p>
+</article>
+<article class="card warning">
+<h3>Access</h3>
+<p>The right people can open it, and others cannot.</p>
+</article>
+</div>
+<details>
+<summary>Final check before you share it</summary>
+<div>
+<ol class="route-list">
+<li>Who owns the report?</li>
+<li>Who can view, edit, build from or reshare it?</li>
+<li>When will the data refresh, and will sign-in work?</li>
+<li>Can a reader tell what the chart shows and what it cannot prove?</li>
+</ol>
+<p>
+<strong>Check:</strong> the report should still make sense after publishing, refreshing and changing the audience.</p>
+</div>
+</details>
+<h2>Code Institute LMS exercise: publish the finished project</h2>
+<p class="intro">The LMS example starts with your checked local <a href="../RetailDashboard.pbix">RetailDashboard.pbix</a>. Publish it, then check the report, refresh and access in Power BI Service.</p>
+<div class="grid two">
+<article class="card model">
+<h3>Follow the LMS publication route</h3>
+<ol class="route-list">
+<li>Quality-check the local report, then choose <strong>File → Publish → Publish to Power BI</strong>.</li>
+<li>Select the workspace you mean to use (the LMS may demonstrate <strong>My workspace</strong>), and record the owner.</li>
+<li>Review credentials, refresh, sensitivity and permissions: View, Edit, Build and Reshare are different grants.</li>
+<li>Open the published report as a reader and test bookmarks, navigation, filters and annotations against the current data.</li>
+</ol>
+<div class="result">
+<strong>Source file:</strong> <a href="../RetailDashboard.pbix">RetailDashboard.pbix</a>.</div>
+</article>
+<article class="card">
+<h3>Know what the report uses</h3>
+<p>The report uses three LMS sources: <code>Features data set</code>, <code>sales data-set</code> and <code>stores data-set</code>. Uploading the file does not prove that refresh or access works.</p>
+<div class="why">
+<strong>Reader test:</strong> ask someone who did not build the report to name the question, period, measure, evidence and limitation.</div>
+<div class="result">
+<strong>Source pack:</strong> <a href="../Features%20data%20set.csv">Features data set.csv</a> · <a href="../sales%20data-set.csv">sales data-set.csv</a> · <a href="../stores%20data-set.csv">stores data-set.csv</a>.</div>
+</article>
+</div>
+<div class="next">
+<a href="06-report.html">← Back: Report</a>
+<a href="index.html">Return to Start Here ↗</a>
+</div>
+<footer>Environment: Power BI Service boundary · <a href="https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-share-dashboards" target="_blank" rel="noreferrer">Microsoft: share Power BI content</a> · <a href="https://learn.microsoft.com/en-us/power-bi/connect-data/refresh-data" target="_blank" rel="noreferrer">Microsoft: refresh data</a>
+</footer>
+</div>
+</main>
+</div>
+</body>
+</html>

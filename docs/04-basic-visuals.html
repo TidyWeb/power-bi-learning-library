@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power BI Learning Library — Basic Visuals</title>
+<link rel="stylesheet" href="assets/power-bi-prototype.css">
+</head>
+<body>
+<div class="library-shell">
+<aside class="rail">
+<a class="rail-mark" href="index.html" aria-label="Power BI Learning Library home">
+<span class="monogram" aria-hidden="true">PBI</span>
+<span>
+<strong>Power BI</strong>
+<small>Learning Library</small>
+</span>
+</a>
+<div>
+<p class="rail-label">Learning route</p>
+<nav aria-label="Power BI learning route">
+<a href="index.html">Start here<span>Truth gate</span>
+</a>
+<a href="01-import-and-profile.html">01 · Import<span>Profile first</span>
+</a>
+<a href="02-clean-and-standardise.html">02 · Clean<span>Make rules visible</span>
+</a>
+<a href="03-handle-outliers.html">03 · Outliers<span>Investigate first</span>
+</a>
+<a href="04-basic-visuals.html" aria-current="page">04 · Visuals<span>Question to chart</span>
+</a>
+<a href="05-data-model.html">05 · Model<span>Grain and links</span>
+</a>
+<a href="06-report.html">06 · Report<span>Evidence page</span>
+</a>
+<a href="07-share-and-tell-a-story.html">07 · Share<span>Audience and story</span>
+</a>
+</nav>
+</div>
+<div class="rail-spacer">
+</div>
+<a class="signature" href="https://github.com/TidyWeb/" target="_blank" rel="noreferrer">
+<img src="assets/tidyweb_logo.png" alt="TidyWeb">
+<span>
+<strong>TidyWeb</strong>Power BI learning prototype</span>
+</a>
+</aside>
+<main class="main">
+<div class="page">
+<header class="hero">
+<p class="eyebrow">04 / BASIC VISUALS</p>
+<h1>Choose the chart that answers the question.</h1>
+<p class="lede">A chart helps someone compare values, follow a change over time or spot unusual values. Choose the chart and calculation that fit the question.</p>
+<div class="badge-row">
+<span class="env-badge">REPORT VIEW</span>
+<span class="gate-badge">CHART CHOICE</span>
+<span class="gate-badge">NUMBER CHOICE</span>
+</div>
+</header>
+<p class="intro">Once the data has been checked and cleaned, choose a chart that makes the comparison easy to read. Say which rows are grouped, which number is calculated and what happens when someone clicks the chart.</p>
+<h2>Match the question to the chart</h2>
+<div class="grid three">
+<article class="card">
+<div class="symbol">↔</div>
+<h3>Compare groups</h3>
+<p>Use a bar or column chart when the question is “which stores or departments differ?”</p>
+</article>
+<article class="card">
+<div class="symbol">↗</div>
+<h3>Follow a change</h3>
+<p>Use a line chart when the order of dates matters.</p>
+</article>
+<article class="card">
+<div class="symbol">▤</div>
+<h3>See the spread</h3>
+<p>Use a table, histogram or summary when you need to see the range and unusual values.</p>
+</article>
+</div>
+<h2>Build the first two charts</h2>
+<div class="grid two">
+<article class="card">
+<div class="step">
+<span class="step-number">1</span>
+<div>
+<h3>Markdown1 by store</h3>
+<p>In Report view choose <strong>Clustered Bar Chart</strong>. Drag <code>Store</code> to the category axis and <code>Markdown1</code> to Values.</p>
+<div class="result">
+<strong>You should see:</strong> one bar for each store, normally using Sum.</div>
+<div class="why">
+<strong>Why:</strong> Store creates the groups; Markdown1 supplies the number.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">2</span>
+<div>
+<h3>Try a different calculation</h3>
+<p>Open the <code>Markdown1</code> field menu and try <strong>Count (Distinct)</strong> as well as Sum.</p>
+<div class="result">
+<strong>You should see:</strong> the bars change because the calculation has changed.</div>
+<div class="why">
+<strong>Why:</strong> Sum and Count (Distinct) answer different questions.</div>
+</div>
+</div>
+</article>
+<article class="card">
+<div class="step">
+<span class="step-number">3</span>
+<div>
+<h3>Temperature over time</h3>
+<p>Choose <strong>Line Chart</strong>, drag <code>Date</code> to the axis and <code>Temperature</code> to Values. Change Temperature from Sum to <strong>Median</strong>.</p>
+<div class="result">
+<strong>You should see:</strong> a time-series line using Power BI's date hierarchy.</div>
+<div class="why">
+<strong>Why:</strong> adding temperatures together does not give a useful typical temperature.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">4</span>
+<div>
+<h3>Change the date detail</h3>
+<p>Try <strong>Go to the next level</strong>, <strong>Expand all down one level</strong>, and <strong>Drill up</strong>.</p>
+<div class="result">
+<strong>You should see:</strong> the visual move between year, quarter, month and day detail.</div>
+<div class="why">
+<strong>Why:</strong> the date hierarchy lets you move from years to days without rebuilding the chart.</div>
+</div>
+</div>
+</article>
+</div>
+<h2>How Power BI combines values</h2>
+<div class="table-wrap">
+<table class="ledger">
+<thead>
+<tr>
+<th>Field</th>
+<th>Calculation</th>
+<th>Question it answers</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>Weekly_Sales</code>
+</td>
+<td>Sum</td>
+<td>What is the total over this group and period?</td>
+<td>Do the dates and row meaning fit the total?</td>
+</tr>
+<tr>
+<td>
+<code>Temperature</code>
+</td>
+<td>Median</td>
+<td>What is a typical temperature in this group?</td>
+<td>Sum would add unlike measurements together.</td>
+</tr>
+<tr>
+<td>
+<code>Markdown1</code>
+</td>
+<td>Sum or distinct count</td>
+<td>What total amount or how many distinct values occurred?</td>
+<td>Count and Sum describe different things.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>What happens when you select a chart?</h2>
+<div class="grid three">
+<article class="card">
+<div class="symbol">F</div>
+<h3>Filter</h3>
+<p>The other chart shows only the related rows.</p>
+</article>
+<article class="card">
+<div class="symbol">H</div>
+<h3>Highlight</h3>
+<p>The selected part stands out while the rest stays visible.</p>
+</article>
+<article class="card">
+<div class="symbol">—</div>
+<h3>None</h3>
+<p>The other chart does not change.</p>
+</article>
+</div>
+<details>
+<summary>Check your chart before moving to the model</summary>
+<div>
+<ol class="route-list">
+<li>What question does the visual answer?</li>
+<li>What groups or dates are shown?</li>
+<li>How is the number being calculated?</li>
+<li>What happens when you select one bar?</li>
+</ol>
+<p>
+<strong>Check:</strong> you should be able to name the group, number, dates and click behaviour.</p>
+</div>
+</details>
+<h2>Code Institute LMS exercise: build the required visuals</h2>
+<p class="intro">Use the cleaned <code>Features data set</code> as the first example, then complete the LMS check with <code>sales data-set</code>. The field names below tell you exactly what to use.</p>
+<div class="grid two">
+<article class="card model">
+<h3>Features data set — first visual pair</h3>
+<ol class="route-list">
+<li>Clustered Bar Chart: <code>Store</code> on the category axis and <code>Markdown1</code> in Values. Compare Sum with Count (Distinct).</li>
+<li>Line Chart: <code>Date</code> on the axis and <code>Temperature</code> in Values. Change the calculation to Median.</li>
+<li>Use the date hierarchy controls to move between year, quarter, month and day, then test cross-highlighting.</li>
+</ol>
+<div class="result">
+<strong>Source:</strong> <a href="../Features%20data%20set.csv">Features data set.csv</a>.</div>
+</article>
+<article class="card">
+<h3>Sales knowledge check</h3>
+<p>Build the companion comparisons the LMS asks for: <code>Store</code> by <code>Weekly_Sales</code>, then <code>Date</code> by <code>Weekly_Sales</code>. Decide whether the question needs Sum, another calculation or a different row meaning before accepting the chart.</p>
+<div class="why">
+<strong>Check:</strong> select a store or period and make sure the other charts change in a way you can explain.</div>
+<div class="result">
+<strong>Source:</strong> <a href="../sales%20data-set.csv">sales data-set.csv</a>.</div>
+</article>
+</div>
+<div class="next">
+<a href="03-handle-outliers.html">← Back: Handle Outliers</a>
+<a href="05-data-model.html">Next: Data Model →</a>
+</div>
+<footer>Environment: Report view · <a href="https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-types-for-reports-and-q-and-a" target="_blank" rel="noreferrer">Microsoft: visual types</a> · <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions" target="_blank" rel="noreferrer">Microsoft: visual interactions</a>
+</footer>
+</div>
+</main>
+</div>
+</body>
+</html>

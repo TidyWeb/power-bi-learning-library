@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power BI Learning Library — Data Model</title>
+<link rel="stylesheet" href="assets/power-bi-prototype.css">
+</head>
+<body>
+<div class="library-shell">
+<aside class="rail">
+<a class="rail-mark" href="index.html" aria-label="Power BI Learning Library home">
+<span class="monogram" aria-hidden="true">PBI</span>
+<span>
+<strong>Power BI</strong>
+<small>Learning Library</small>
+</span>
+</a>
+<div>
+<p class="rail-label">Learning route</p>
+<nav aria-label="Power BI learning route">
+<a href="index.html">Start here<span>Truth gate</span>
+</a>
+<a href="01-import-and-profile.html">01 · Import<span>Profile first</span>
+</a>
+<a href="02-clean-and-standardise.html">02 · Clean<span>Make rules visible</span>
+</a>
+<a href="03-handle-outliers.html">03 · Outliers<span>Investigate first</span>
+</a>
+<a href="04-basic-visuals.html">04 · Visuals<span>Question to chart</span>
+</a>
+<a href="05-data-model.html" aria-current="page">05 · Model<span>Grain and links</span>
+</a>
+<a href="06-report.html">06 · Report<span>Evidence page</span>
+</a>
+<a href="07-share-and-tell-a-story.html">07 · Share<span>Audience and story</span>
+</a>
+</nav>
+</div>
+<div class="rail-spacer">
+</div>
+<a class="signature" href="https://github.com/TidyWeb/" target="_blank" rel="noreferrer">
+<img src="assets/tidyweb_logo.png" alt="TidyWeb">
+<span>
+<strong>TidyWeb</strong>Power BI learning prototype</span>
+</a>
+</aside>
+<main class="main">
+<div class="page">
+<header class="hero">
+<p class="eyebrow">05 / DATA MODEL</p>
+<h1>A relationship tells Power BI which rows belong together.</h1>
+<p class="lede">Before you join two tables, check what one row means in each table, which columns match, and which table has one row for each match.</p>
+<div class="badge-row">
+<span class="env-badge">MODEL VIEW</span>
+<span class="gate-badge">WHAT MATCHES?</span>
+<span class="gate-badge">CHECK THE LINK</span>
+</div>
+</header>
+<p class="intro">The Retail tables describe different things. Sales has one row for a Store, Department and Date. Features has one row for a Store and Date. Stores has one row for a Store. If you ignore that difference, Power BI can produce totals that look neat but are wrong.</p>
+<h2>Start by asking what one row describes</h2>
+<div class="grid three">
+<article class="card">
+<div class="symbol">F</div>
+<h3>Features</h3>
+<p>
+<strong>One row = Store + Date.</strong> Temperature, fuel price, markdowns and holiday information.</p>
+</article>
+<article class="card measure">
+<div class="symbol">S</div>
+<h3>Sales</h3>
+<p>
+<strong>One row = Store + Dept + Date.</strong> Weekly sales for one department.</p>
+</article>
+<article class="card model">
+<div class="symbol">D</div>
+<h3>Stores</h3>
+<p>
+<strong>One row = Store.</strong> Store type and size.</p>
+</article>
+</div>
+<h2>What should match?</h2>
+<figure class="pipeline">
+<svg viewBox="0 0 980 205" role="img" aria-labelledby="model-title model-desc">
+<title id="model-title">Retail table grain and relationship route</title>
+<desc id="model-desc">Stores filters Sales by Store. Features matches Sales by the Store and Date combination used in the lesson exercise.</desc>
+<g font-family="system-ui, sans-serif" text-anchor="middle">
+<g fill="#ffffff" stroke="#118dff" stroke-width="2">
+<rect x="45" y="58" width="190" height="66" rx="8"/>
+<rect x="395" y="18" width="190" height="66" rx="8"/>
+<rect x="395" y="122" width="190" height="66" rx="8"/>
+<rect x="745" y="58" width="190" height="66" rx="8"/>
+</g>
+<g fill="#252423" font-size="14" font-weight="700">
+<text x="140" y="84">STORES</text>
+<text x="140" y="104">one row = Store</text>
+<text x="490" y="44">FEATURES</text>
+<text x="490" y="64">one row = Store + Date</text>
+<text x="490" y="148">SALES</text>
+<text x="490" y="168">one row = Store + Dept + Date</text>
+<text x="840" y="84">REPORT VISUAL</text>
+<text x="840" y="104">chart / total</text>
+</g>
+<g fill="none" stroke="#118dff" stroke-width="2">
+<path d="M235 91h145m-8-7 8 7-8 7"/>
+<path d="M585 55h120v36h40m-8-7 8 7-8 7"/>
+<path d="M585 155h120v-36h40m-8-7 8 7-8 7"/>
+</g>
+<g fill="#6e5600" font-size="13" font-weight="700">
+<text x="310" y="80">1 → *</text>
+<text x="650" y="48">Store + Date match</text>
+<text x="650" y="146">Store filter path</text>
+</g>
+</g>
+</svg>
+<figcaption class="caption">The line only makes sense after you have said what each row means and which columns match. The Mixed Key below is only for this exercise.</figcaption>
+</figure>
+<h2>Build and test the exercise relationship</h2>
+<div class="grid two">
+<article class="card">
+<div class="step">
+<span class="step-number">1</span>
+<div>
+<h3>Create the first Mixed Key</h3>
+<p>In <code>Features data set</code>, add a calculated column using the lesson's <code>CONCATENATE([Store], [Date])</code> pattern.</p>
+<div class="result">
+<strong>You should see:</strong> a key value combining Store and Date.</div>
+<div class="why">
+<strong>Why:</strong> Store repeats across dates, so Store alone cannot identify a Features row.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">2</span>
+<div>
+<h3>Create the matching key</h3>
+<p>Make the same named key in <code>sales data-set</code>, then inspect both columns before relating them.</p>
+<div class="result">
+<strong>You should see:</strong> matching text patterns on both sides.</div>
+<div class="why">
+<strong>Why:</strong> Power BI can only match rows when the values and types agree.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">3</span>
+<div>
+<h3>Check the key before drawing the line</h3>
+<p>Look for different types, missing separators or two different combinations producing the same text.</p>
+<div class="result">
+<strong>You should see:</strong> a documented key assumption and a known unique/repeated side.</div>
+<div class="why">
+<strong>Why:</strong> a key that is not unique can join the wrong rows.</div>
+</div>
+</div>
+</article>
+<article class="card model">
+<div class="step">
+<span class="step-number">4</span>
+<div>
+<h3>Open Model view</h3>
+<p>Remove the automatically inferred Features–Stores connection if it is not the link you intend. Drag the lesson key from Features to Sales.</p>
+<div class="result">
+<strong>You should see:</strong> a relationship line between the tables through the Mixed Key.</div>
+<div class="why">
+<strong>Why:</strong> this exercise matches Store + Date context to Sales rows.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">5</span>
+<div>
+<h3>Choose the relationship settings</h3>
+<p>Check the one-to-many setting (1 → *) and the filter direction. Do not leave Both-direction filtering on without a reason.</p>
+<div class="result">
+<strong>You should see:</strong> the relationship dialogue reflecting the chosen options.</div>
+<div class="why">
+<strong>Why:</strong> a filter can travel through more than one route and change a total you did not mean to change.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">6</span>
+<div>
+<h3>Test the link with a chart</h3>
+<p>Use Store and Date in a simple chart. Select a store and check the rows and totals that change.</p>
+<div class="result">
+<strong>You should see:</strong> filtering changes the intended visual and does not silently change unrelated totals.</div>
+<div class="why">
+<strong>Why:</strong> the line in Model view is not enough; the filter must behave as expected.</div>
+</div>
+</div>
+</article>
+</div>
+<div class="notice">
+<strong>For this exercise:</strong> use the Mixed Key because the LMS asks for it. In other work, check key uniqueness and use clear separators before joining tables.</div>
+<details>
+<summary>Check your model before building a report page</summary>
+<div>
+<ol class="route-list">
+<li>What does one row represent in each table?</li>
+<li>Which side should be unique?</li>
+<li>Which fields make the intended match?</li>
+<li>What filter path should a Store selection follow?</li>
+</ol>
+<p>
+<strong>Check:</strong> explain the relationship in ordinary words before trusting a total made through it.</p>
+</div>
+</details>
+<h2>Code Institute LMS exercise: build the lesson model</h2>
+<p class="intro">The LMS model task uses the tables you imported. Create and inspect the keys before drawing the relationship.</p>
+<div class="grid two">
+<article class="card model">
+<h3>Make the Features–Sales link</h3>
+<ol class="route-list">
+<li>In <code>Features data set</code>, create the DAX calculated column <code>Mixed Key = CONCATENATE([Store], [Date])</code>.</li>
+<li>Create the same <code>Mixed Key</code> in <code>sales data-set</code>; inspect types and matching values.</li>
+<li>Remove the automatically inferred Features–Stores relationship if it does not represent the intended grain, then relate Features Mixed Key to Sales Mixed Key.</li>
+<li>Keep the Stores–Sales Store relation, and follow the LMS instruction for how filters should travel and which security option to select.</li>
+</ol>
+<div class="result">
+<strong>Inputs:</strong> <a href="../Features%20data%20set.csv">Features data set.csv</a> · <a href="../sales%20data-set.csv">sales data-set.csv</a> · <a href="../stores%20data-set.csv">stores data-set.csv</a>.</div>
+</article>
+<article class="card">
+<h3>Knowledge-check behaviour</h3>
+<p>Test the model with a simple chart: select a Store and compare the Features context with Sales totals. The filter should behave as you described it.</p>
+<div class="why">
+<strong>For this exercise:</strong> Mixed Key is the bridge used by the LMS. Do not assume that joining text this way is right for every project.</div>
+</article>
+</div>
+<div class="next">
+<a href="04-basic-visuals.html">← Back: Basic Visuals</a>
+<a href="06-report.html">Next: Report →</a>
+</div>
+<footer>Environment: Model view · <a href="https://learn.microsoft.com/en-us/power-bi/guidance/star-schema" target="_blank" rel="noreferrer">Microsoft: star schema guidance</a> · <a href="https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand" target="_blank" rel="noreferrer">Microsoft: relationships</a>
+</footer>
+</div>
+</main>
+</div>
+</body>
+</html>

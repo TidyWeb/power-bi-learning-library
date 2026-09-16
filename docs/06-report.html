@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power BI Learning Library — Report</title>
+<link rel="stylesheet" href="assets/power-bi-prototype.css">
+</head>
+<body>
+<div class="library-shell">
+<aside class="rail">
+<a class="rail-mark" href="index.html" aria-label="Power BI Learning Library home">
+<span class="monogram" aria-hidden="true">PBI</span>
+<span>
+<strong>Power BI</strong>
+<small>Learning Library</small>
+</span>
+</a>
+<div>
+<p class="rail-label">Learning route</p>
+<nav aria-label="Power BI learning route">
+<a href="index.html">Start here<span>Truth gate</span>
+</a>
+<a href="01-import-and-profile.html">01 · Import<span>Profile first</span>
+</a>
+<a href="02-clean-and-standardise.html">02 · Clean<span>Make rules visible</span>
+</a>
+<a href="03-handle-outliers.html">03 · Outliers<span>Investigate first</span>
+</a>
+<a href="04-basic-visuals.html">04 · Visuals<span>Question to chart</span>
+</a>
+<a href="05-data-model.html">05 · Model<span>Grain and links</span>
+</a>
+<a href="06-report.html" aria-current="page">06 · Report<span>Evidence page</span>
+</a>
+<a href="07-share-and-tell-a-story.html">07 · Share<span>Audience and story</span>
+</a>
+</nav>
+</div>
+<div class="rail-spacer">
+</div>
+<a class="signature" href="https://github.com/TidyWeb/" target="_blank" rel="noreferrer">
+<img src="assets/tidyweb_logo.png" alt="TidyWeb">
+<span>
+<strong>TidyWeb</strong>Power BI learning prototype</span>
+</a>
+</aside>
+<main class="main">
+<div class="page">
+<header class="hero">
+<p class="eyebrow">06 / REPORT</p>
+<h1>Build a report a reader can follow.</h1>
+<p class="lede">Put the question, dates, numbers, charts and limits in an order that makes sense to someone who did not build the report.</p>
+<div class="badge-row">
+<span class="env-badge">REPORT VIEW</span>
+<span class="gate-badge">BUILD THE PAGE</span>
+<span class="gate-badge">CHECK THE STORY</span>
+</div>
+</header>
+<p class="intro">The LMS asks for summary cards, store-department detail, a tooltip, slicers, interactions and a forecast. Put them in an order that takes the reader from the main numbers to the evidence behind them.</p>
+<h2>Put the page in a sensible order</h2>
+<div class="grid four">
+<article class="card">
+<div class="symbol">1</div>
+<h3>Title and purpose</h3>
+<p>What is this page about, for whom and for which dates?</p>
+</article>
+<article class="card">
+<div class="symbol">2</div>
+<h3>Key numbers</h3>
+<p>Show the important numbers with units and dates.</p>
+</article>
+<article class="card">
+<div class="symbol">3</div>
+<h3>Charts and detail</h3>
+<p>Show comparisons and trends that explain the numbers.</p>
+</article>
+<article class="card warning">
+<div class="symbol">4</div>
+<h3>Limits</h3>
+<p>Say what the data does not prove and what to check next.</p>
+</article>
+</div>
+<h2>Define every number on a card</h2>
+<div class="table-wrap">
+<table class="ledger">
+<thead>
+<tr>
+<th>Report element</th>
+<th>What it means</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total sales</td>
+<td>Sum of <code>Weekly_Sales</code> for the selected dates and filters.</td>
+<td>Could joining tables have counted the same sale twice?</td>
+</tr>
+<tr>
+<td>Peak value</td>
+<td>The largest value at a named level: store, department, date or store-date.</td>
+<td>Would a different grouping give a different peak?</td>
+</tr>
+<tr>
+<td>Median temperature</td>
+<td>The middle Temperature value for the selected rows.</td>
+<td>Are the dates and rows included clear?</td>
+</tr>
+<tr>
+<td>Forecast</td>
+<td>A future estimate made by Power BI.</td>
+<td>Is it labelled as an estimate, not a past result?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>Build the report page</h2>
+<div class="grid two">
+<article class="card">
+<div class="step">
+<span class="step-number">1</span>
+<div>
+<h3>Set the title and dates</h3>
+<p>Write the page title, audience, dates and reading order before arranging charts.</p>
+<div class="result">
+<strong>You should see:</strong> a page with one clear job, not a gallery of spare charts.</div>
+<div class="why">
+<strong>Why:</strong> a reader needs to know what the page is for before reading the charts.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">2</span>
+<div>
+<h3>Add summary cards</h3>
+<p>Add cards for total sales, markdowns or other agreed numbers. Label the units and dates.</p>
+<div class="result">
+<strong>You should see:</strong> cards whose values change as expected when you use the filters.</div>
+<div class="why">
+<strong>Why:</strong> a number without a name, unit or date is easy to misread.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">3</span>
+<div>
+<h3>Add store and department detail</h3>
+<p>Add a comparison chart so the reader can move from the overview to a store or department.</p>
+<div class="result">
+<strong>You should see:</strong> a visual that supports the detail question rather than repeating a summary card.</div>
+<div class="why">
+<strong>Why:</strong> detail should explain a difference, not just fill the page.</div>
+</div>
+</div>
+</article>
+<article class="card">
+<div class="step">
+<span class="step-number">4</span>
+<div>
+<h3>Add useful tooltip detail</h3>
+<p>Create a tooltip page when extra detail helps explain a mark. Give it a clear title.</p>
+<div class="result">
+<strong>You should see:</strong> extra detail that answers a follow-up question without hiding the main chart.</div>
+<div class="why">
+<strong>Why:</strong> a tooltip is extra help, not a place to hide an important number.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">5</span>
+<div>
+<h3>Add slicers and interactions</h3>
+<p>Use a slicer for the choice the reader is allowed to change. Set filter, highlight or none deliberately.</p>
+<div class="result">
+<strong>You should see:</strong> the charts you chose respond, while unrelated charts still make sense.</div>
+<div class="why">
+<strong>Why:</strong> clicking is part of how the report works.</div>
+</div>
+</div>
+<div class="step">
+<span class="step-number">6</span>
+<div>
+<h3>Change the date filter</h3>
+<p>Change the dates and recheck totals, peaks, notes, forecasts and written conclusions.</p>
+<div class="result">
+<strong>You should see:</strong> the story remains honest under a new selection.</div>
+<div class="why">
+<strong>Why:</strong> a note that was true for one date range may be wrong for another.</div>
+</div>
+</div>
+</article>
+</div>
+<h2>Say what the chart shows and what it cannot prove</h2>
+<div class="grid four">
+<article class="card">
+<div class="symbol">O</div>
+<h3>What it shows</h3>
+<p>The values and pattern you can see.</p>
+</article>
+<article class="card">
+<div class="symbol">I</div>
+<h3>What it might mean</h3>
+<p>A possible reason for the pattern.</p>
+</article>
+<article class="card warning">
+<div class="symbol">C</div>
+<h3>What it cannot prove</h3>
+<p>The limit of the data or chart.</p>
+</article>
+<article class="card measure">
+<div class="symbol">Q</div>
+<h3>What to check next</h3>
+<p>The next piece of evidence you need.</p>
+</article>
+</div>
+<details>
+<summary>Check the report before sharing it</summary>
+<div>
+<ol class="route-list">
+<li>Can a reader name the question, period and measure?</li>
+<li>Does every summary card have a definition and unit?</li>
+<li>Does the forecast carry a clear caveat?</li>
+<li>Does the report distinguish observation from interpretation?</li>
+</ol>
+<p>
+<strong>Check:</strong> ask someone else to explain the page without you translating it.</p>
+</div>
+</details>
+<h2>Code Institute LMS exercise: assemble the Retail report</h2>
+<p class="intro">This is the report-page example built from the Retail tables. Start with the cleaned and linked tables; do not build a page from fields you have not checked.</p>
+<div class="grid two">
+<article class="card model">
+<h3>Required report components</h3>
+<ol class="route-list">
+<li>Add summary cards for agreed sales/markdown measures and label their period and units.</li>
+<li>Add store–department detail so the reader can move from the overview to a specific comparison.</li>
+<li>Create a dynamic tooltip page, a slicer and clear click behaviour.</li>
+<li>Review the sales trend and forecast as an estimate, then add bookmarks and notes that still match the selected dates.</li>
+</ol>
+<div class="result">
+<strong>Primary source:</strong> <a href="../sales%20data-set.csv">sales data-set.csv</a>.</div>
+</article>
+<article class="card">
+<h3>Use the other tables to explain the sales</h3>
+<p>Use <code>Features data set</code> fields such as <code>Markdown1</code>, <code>Temperature</code> and <code>Date</code> to explain a sales pattern, while <code>stores data-set</code> supplies store details. Say which table and row meaning each number uses.</p>
+<div class="why">
+<strong>Final report check:</strong> change the date or Store selection and re-read every card, note and forecast statement.</div>
+<div class="result">
+<strong>Supporting sources:</strong> <a href="../Features%20data%20set.csv">Features data set.csv</a> · <a href="../stores%20data-set.csv">stores data-set.csv</a>.</div>
+</article>
+</div>
+<div class="next">
+<a href="05-data-model.html">← Back: Data Model</a>
+<a href="07-share-and-tell-a-story.html">Next: Share and Tell a Story →</a>
+</div>
+<footer>Environment: Report view · <a href="https://learn.microsoft.com/en-us/power-bi/create-reports/service-report-visuals" target="_blank" rel="noreferrer">Microsoft: reports and visuals</a> · <a href="https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-quickstart-learn-dax-basics" target="_blank" rel="noreferrer">Microsoft: measures and DAX basics</a>
+</footer>
+</div>
+</main>
+</div>
+</body>
+</html>

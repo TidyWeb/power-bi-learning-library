@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power BI Learning Library — Clean and Standardise</title>
+  <link rel="stylesheet" href="assets/power-bi-prototype.css">
+</head>
+<body>
+<div class="library-shell">
+  <aside class="rail">
+    <a class="rail-mark" href="index.html" aria-label="Power BI Learning Library home"><span class="monogram" aria-hidden="true">PBI</span><span><strong>Power BI</strong><small>Learning Library</small></span></a>
+    <div><p class="rail-label">Learning route</p><nav aria-label="Power BI learning route"><a href="index.html">Start here<span>Truth gate</span></a><a href="01-import-and-profile.html">01 · Import<span>Profile first</span></a><a href="02-clean-and-standardise.html" aria-current="page">02 · Clean<span>Make rules visible</span></a><a href="03-handle-outliers.html">03 · Outliers<span>Investigate first</span></a><a href="04-basic-visuals.html">04 · Visuals<span>Question to chart</span></a><a href="05-data-model.html">05 · Model<span>Grain and links</span></a><a href="06-report.html">06 · Report<span>Evidence page</span></a><a href="07-share-and-tell-a-story.html">07 · Share<span>Audience and story</span></a></nav></div>
+    <div class="rail-spacer"></div>
+    <a class="signature" href="https://github.com/TidyWeb/" target="_blank" rel="noreferrer"><img src="assets/tidyweb_logo.png" alt="TidyWeb"><span><strong>TidyWeb</strong>Power BI learning prototype</span></a>
+  </aside>
+
+  <main class="main"><div class="page">
+    <header class="hero">
+      <p class="eyebrow">02 / CLEAN AND STANDARDISE</p>
+      <h1>Cleaning means making each value usable and understandable.</h1>
+      <p class="lede">For every change, say what is wrong, what you will do, and how you will check the result.</p>
+      <div class="badge-row"><span class="env-badge">POWER QUERY</span><span class="gate-badge">CLEANING</span><span class="gate-badge">CHECK YOUR WORK</span></div>
+    </header>
+
+    <p class="intro">The Retail files show us real problems: the word <code>NA</code> in number columns, dates that need limiting, negative values, wrong types and values that need carrying down. A small text example shows trimming, splitting at a pipe and dealing with an uncategorised item.</p>
+
+    <h2>A simple order for cleaning</h2>
+    <div class="grid four">
+      <article class="card"><div class="symbol">1</div><h3>Look</h3><p>Use the profile to find the problem before touching a button.</p></article>
+      <article class="card"><div class="symbol">2</div><h3>Make values consistent</h3><p>Trim spaces and use the same date, label and number format.</p></article>
+      <article class="card"><div class="symbol">3</div><h3>Decide what values mean</h3><p>Keep empty, missing, zero, error and unknown separate until you know what they mean.</p></article>
+      <article class="card warning"><div class="symbol">4</div><h3>Check the result</h3><p>Look again at the values, row count, dates and what one row describes.</p></article>
+    </div>
+
+    <h2>Before → change → after</h2>
+    <div class="grid two">
+      <article class="card">
+        <h3>Missing-looking values are not one thing</h3>
+        <div class="state-flow"><div class="state before"><strong>Before</strong><p><code>NA</code>, blank text, whitespace, <code>null</code>, zero and error are mixed together.</p></div><div class="arrow" aria-hidden="true">→</div><div class="state after"><strong>After a documented rule</strong><p>Each state is retained, converted or excluded according to its meaning and the report requirement.</p></div></div>
+        <p class="muted">Do not replace every empty value with zero. First decide what the empty value means.</p>
+      </article>
+      <article class="card model">
+        <h3>Compound text can become fields</h3>
+        <div class="state-flow"><div class="state before"><strong>Teaching fixture</strong><p><code>4K Monitor | Screens</code></p></div><div class="arrow" aria-hidden="true">→</div><div class="state after"><strong>After split + trim</strong><p><code>Product Name</code> = 4K Monitor<br><code>Category</code> = Screens</p></div></div>
+        <p class="muted">This illustrates a general operation. It is not a column found in the current Retail CSVs.</p>
+      </article>
+    </div>
+
+    <h2>Three rules that stop bad cleaning</h2>
+    <div class="grid three">
+      <article class="card"><div class="symbol">A</div><h3>Trim before matching</h3><p>Spaces at the start or end can make two labels look the same but behave differently. Trim first.</p></article>
+      <article class="card warning"><div class="symbol">B</div><h3>Check before correcting</h3><p>A negative Markdown value may be wrong; a negative temperature may be perfectly normal. Look at the column before changing it.</p></article>
+      <article class="card measure"><div class="symbol">C</div><h3>Write down Fill Down</h3><p>Fill Down copies the last value into the rows below it. Use it only when the order of the rows makes that sensible.</p></article>
+    </div>
+
+    <h2>Cleaning decision table</h2>
+    <div class="table-wrap">
+      <table class="ledger">
+        <thead><tr><th>What you find</th><th>What to do</th><th>Why</th><th>How to check</th></tr></thead>
+        <tbody>
+          <tr><td><code>NA</code> in a numeric field</td><td>Convert the sentinel to <code>null</code>, then set the intended numeric type.</td><td>Keep “not supplied” distinct from a measured zero.</td><td>Re-profile the field; confirm no sentinel text remains and null count is understood.</td></tr>
+          <tr><td>Whitespace around a label</td><td>Trim before matching or mapping.</td><td>Equivalent labels should compare consistently.</td><td>Profile distinct values before and after; inspect the mapping result.</td></tr>
+          <tr><td>Pipe-separated teaching fixture</td><td>Split on the delimiter, trim both outputs, rename fields.</td><td>Turn one compound field into two useful dimensions.</td><td>Check row count, non-empty outputs and the uncategorised branch.</td></tr>
+          <tr><td>Negative value</td><td>Investigate meaning; apply a conditional rule only where the domain justifies it.</td><td>Not every negative is an error.</td><td>Compare affected-row count and preserve an audit note for the rule.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice"><strong>Keep the examples separate:</strong> the Retail files are the main exercise. The pipe-separated product is a small extra example; it is not a column in the Retail files.</div>
+
+    <details class="answer-check"><summary>Check your understanding before moving to the model</summary><div><ol class="route-list"><li>Why is <code>null</code> not automatically the same as zero?</li><li>Why should you inspect a suspicious negative value before replacing it?</li><li>How would you check that splitting and trimming kept the right rows?</li></ol><p><strong>Answer:</strong> say what the value means, write the rule you used, and name the check that would show whether the rule worked.</p></div></details>
+
+    <h2>Code Institute LMS exercise: clean the Retail queries</h2>
+    <p class="intro">Now apply the general behaviour to the actual LMS inputs. In Power BI choose <strong>Home → Transform data</strong>, select <code>Features data set</code>, and keep the applied steps visible as an audit trail.</p>
+    <div class="grid two">
+      <article class="card model"><h3>Features data set — the named operations</h3><ol class="route-list"><li>Filter <code>Date</code> to on or after <code>01/11/2011</code>, as the practice task specifies.</li><li>Replace literal <code>NA</code> with <code>null</code> in <code>Markdown1</code>–<code>Markdown5</code>, then set those fields, <code>CPI</code> and <code>Unemployment</code> to Decimal Number.</li><li>Fill Down <code>CPI</code> and <code>Unemployment</code> only after checking that the row order supports that assumption.</li><li>Decide and record how remaining Markdown nulls are treated; do not silently call them zero.</li><li>Trim text where the profile shows whitespace, then <strong>Close &amp; Apply</strong>.</li></ol><div class="result"><strong>Use the raw input:</strong> <a href="../Features%20data%20set.csv">Features data set.csv</a>.</div></article>
+      <article class="card"><h3>Transfer the reasoning to Sales</h3><p>The LMS knowledge check asks you to apply the same date-scope thinking to <code>sales data-set</code>. Do not assume the tables have the same grain: Sales remains one row per Store + Dept + Date.</p><div class="why"><strong>Validate:</strong> re-profile the affected columns, confirm the date boundary, and check that the transformation has not changed the intended row grain.</div><div class="result"><strong>Use the raw input:</strong> <a href="../sales%20data-set.csv">sales data-set.csv</a>.</div></article>
+    </div>
+
+    <div class="next"><a href="01-import-and-profile.html">← Back: Import and Profile</a><a href="03-handle-outliers.html">Next: Handle Outliers →</a></div>
+    <footer>Environment: Power Query · <a href="https://learn.microsoft.com/en-us/power-query/best-practices" target="_blank" rel="noreferrer">Microsoft: Power Query best practices</a> · <a href="https://learn.microsoft.com/en-us/power-query/dealing-with-errors" target="_blank" rel="noreferrer">Microsoft: dealing with errors</a> · <a href="https://www.blog.datawithbaraa.com/p/where-should-your-calculationstransformations" target="_blank" rel="noreferrer">Data with Baraa: where logic belongs</a></footer>
+  </div></main>
+</div>
+</body>
+</html>

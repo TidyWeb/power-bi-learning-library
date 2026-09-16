@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power BI Learning Library — Import and Profile</title>
+  <link rel="stylesheet" href="assets/power-bi-prototype.css">
+</head>
+<body>
+<div class="library-shell">
+  <aside class="rail">
+    <a class="rail-mark" href="index.html" aria-label="Power BI Learning Library home"><span class="monogram" aria-hidden="true">PBI</span><span><strong>Power BI</strong><small>Learning Library</small></span></a>
+    <div><p class="rail-label">Learning route</p><nav aria-label="Power BI learning route"><a href="index.html">Start here<span>Truth gate</span></a><a href="01-import-and-profile.html" aria-current="page">01 · Import<span>Profile first</span></a><a href="02-clean-and-standardise.html">02 · Clean<span>Make rules visible</span></a><a href="03-handle-outliers.html">03 · Outliers<span>Investigate first</span></a><a href="04-basic-visuals.html">04 · Visuals<span>Question to chart</span></a><a href="05-data-model.html">05 · Model<span>Grain and links</span></a><a href="06-report.html">06 · Report<span>Evidence page</span></a><a href="07-share-and-tell-a-story.html">07 · Share<span>Audience and story</span></a></nav></div>
+    <div class="rail-spacer"></div>
+    <a class="signature" href="https://github.com/TidyWeb/" target="_blank" rel="noreferrer"><img src="assets/tidyweb_logo.png" alt="TidyWeb"><span><strong>TidyWeb</strong>Power BI learning prototype</span></a>
+  </aside>
+
+  <main class="main"><div class="page">
+    <header class="hero">
+      <p class="eyebrow">01 / IMPORT AND PROFILE</p>
+      <h1>Before we clean anything, we need to know what arrived.</h1>
+      <p class="lede">Power Query can remember the steps you take, but it cannot tell you whether the files answer the client’s question. Import is your first look at what arrived.</p>
+      <div class="badge-row"><span class="env-badge">POWER QUERY</span><span class="env-badge">TABLE VIEW</span><span class="gate-badge">PROFILE GATE</span></div>
+    </header>
+
+    <p class="intro">Suppose the client says, “Give us a reliable picture of retail performance.” Before choosing a chart, list the files, check whether the columns and dates make sense, and use the row-meaning question from Start Here: <strong>what is this row about?</strong></p>
+
+    <h2>What arrived?</h2>
+    <div class="notice"><strong>Reminder from Start Here:</strong> “What one row is about” is not a list of every column. It names the record. The other columns give details about that record. In Sales, for example, the row is about one department in one store for one week; <code>Weekly_Sales</code> tells us how much was sold.</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Source table</th><th>What one row is about</th><th>Useful role</th><th>First thing to verify</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Features</strong></td><td>One <code>Store + Date</code> record</td><td>Context such as temperature, fuel price, markdowns and holiday status</td><td>Are the store/date keys unique and are dates typed as dates?</td></tr>
+          <tr><td><strong>Sales</strong></td><td>One <code>Store + Dept + Date</code> record</td><td>Weekly sales at department level</td><td>Will one row still mean the same thing after linking?</td></tr>
+          <tr><td><strong>Stores</strong></td><td>One <code>Store</code> record</td><td>Store-level attributes such as type and size</td><td>Is <code>Store</code> unique on this side?</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">The table gives us a starting point for this project. Always check what one row describes before you join tables or add up numbers.</p>
+
+    <h2>From file to Power BI table</h2>
+    <figure class="pipeline">
+      <svg viewBox="0 0 980 180" role="img" aria-labelledby="import-title import-desc">
+        <title id="import-title">From file to Power BI table</title>
+        <desc id="import-desc">A file enters Get Data, is checked in the preview, then goes to Transform Data or Load.</desc>
+        <g font-family="system-ui, sans-serif" text-anchor="middle">
+          <g fill="#ffffff" stroke="#118dff" stroke-width="2"><rect x="18" y="52" width="150" height="54" rx="8"/><rect x="218" y="52" width="150" height="54" rx="8"/><rect x="418" y="52" width="150" height="54" rx="8"/><rect x="680" y="20" width="145" height="54" rx="8"/><rect x="680" y="104" width="145" height="54" rx="8"/></g>
+          <g fill="#252423" font-size="14" font-weight="700"><text x="93" y="76">FILE</text><text x="93" y="95">CSV / workbook</text><text x="293" y="76">GET DATA</text><text x="293" y="95">choose connector</text><text x="493" y="76">PREVIEW</text><text x="493" y="95">check the table</text><text x="752" y="44">TRANSFORM DATA</text><text x="752" y="63">clean + check</text><text x="752" y="128">LOAD</text><text x="752" y="147">bring it into Power BI</text></g>
+          <g fill="none" stroke="#118dff" stroke-width="2"><path d="M168 79h42m-8-7 8 7-8 7M368 79h42m-8-7 8 7-8 7M568 79h76v-32h30m-8-7 8 7-8 7M644 79h36v52h-30m8-7-8 7 8 7"/></g>
+          <text x="495" y="174" fill="#6e5600" font-size="13" font-weight="700">CHECK THE FILE BEFORE YOU LOAD IT</text>
+        </g>
+      </svg>
+      <figcaption class="caption">Power Query remembers your cleaning steps. The original files stay unchanged, so you can always see what you started with.</figcaption>
+    </figure>
+
+    <h2>Do this in Power BI Desktop</h2>
+    <div class="grid two">
+      <article class="card">
+        <div class="step"><span class="step-number">1</span><div><h3>Connect to the file</h3><p>Choose <strong>Get data</strong> and select the supplied file. Read the columns instead of guessing what the filename means.</p><div class="result"><strong>You should see:</strong> the connector or preview with the available table or sheet.</div><div class="why"><strong>Why:</strong> the file name does not tell you what each row or column means.</div></div></div>
+        <div class="step"><span class="step-number">2</span><div><h3>Choose Transform Data</h3><p>Open Power Query before loading the file so you can inspect and clean it.</p><div class="result"><strong>You should see:</strong> Power Query Editor with the query and a preview of the rows.</div><div class="why"><strong>Why:</strong> a preview helps you inspect the file before it becomes part of the report.</div></div></div>
+      </article>
+      <article class="card">
+        <div class="step"><span class="step-number">3</span><div><h3>Write down what one row describes</h3><p>For each table, complete the sentence “one row describes …”. Then note which columns together identify that row.</p><div class="result"><strong>You should see:</strong> a short list saying what each table is about and which columns may link it to another table.</div><div class="why"><strong>Why:</strong> if you do not know what a row means, you cannot know what a total means.</div></div></div>
+        <div class="step"><span class="step-number">4</span><div><h3>Check the whole file</h3><p>Use Column quality, Column distribution and Column profile. Check whether Power BI is showing the first 1,000 rows or the whole table.</p><div class="result"><strong>You should see:</strong> counts of valid, empty, error, distinct and repeated values.</div><div class="why"><strong>Why:</strong> the first rows can look fine while a later row contains a problem.</div></div></div>
+      </article>
+    </div>
+
+    <h2>What to look for in the preview</h2>
+    <div class="grid two">
+      <div class="card"><h3>Look at the values before changing anything</h3><p>Check what values occur, how often they occur, and whether their type matches what the column is supposed to hold. The profile helps you decide what to do; it does not decide for you.</p><div class="profile-bars" aria-label="Example profile states"><div class="profile-row"><span>Valid</span><div class="profile-bar"><span class="valid" style="width:82%"></span><span class="empty" style="width:8%"></span><span class="error" style="width:4%"></span><span class="unknown" style="width:6%"></span></div><span>82%</span></div><div class="profile-row"><span>Distinct</span><div class="profile-bar"><span class="unknown" style="width:36%"></span><span class="valid" style="width:64%"></span></div><span>signal</span></div><div class="profile-row"><span>Keys</span><div class="profile-bar"><span class="valid" style="width:91%"></span><span class="error" style="width:9%"></span></div><span>check</span></div></div><div class="legend"><span>valid</span><span class="l-empty">empty</span><span class="l-error">error</span><span class="l-unknown">unknown / repeated</span></div></div>
+      <div class="card warning"><h3>Questions to answer</h3><ul class="route-list"><li>What type of value is in each important column?</li><li>Which values are empty, written as words such as <code>NA</code>, or errors?</li><li>Which columns are unique, and which repeat?</li><li>Does the preview cover the whole table?</li><li>Are the dates and stores the ones the client needs?</li></ul><div class="notice"><strong>Stop here if you cannot explain:</strong> what one row describes, which columns identify it, and what the unusual values mean.</div></div>
+    </div>
+
+    <details><summary>Before you start cleaning</summary><div><p><strong>Question:</strong> Why is “the first 1,000 rows look fine” not enough?</p><p><strong>Answer:</strong> a later row may contain an error, missing value or unexpected category. Check the whole table before you decide on a cleaning rule.</p></div></details>
+
+    <h2>Code Institute LMS exercise: import these exact sources</h2>
+    <p class="intro">This page’s worked example is the LMS import task. Open <a href="../RetailDashboard.pbix">RetailDashboard.pbix</a>, choose <strong>Home → Get data → Text/CSV</strong>, and repeat the import for each raw file below.</p>
+    <div class="table-wrap"><table class="ledger"><thead><tr><th>LMS file</th><th>Power BI table</th><th>Row meaning to write down</th><th>First inspection</th></tr></thead><tbody>
+      <tr><td><a href="../Features%20data%20set.csv">Features data set.csv</a></td><td><code>Features data set</code></td><td>Store + Date</td><td>Markdown fields, Temperature, date type</td></tr>
+      <tr><td><a href="../sales%20data-set.csv">sales data-set.csv</a></td><td><code>sales data-set</code></td><td>Store + Dept + Date</td><td>Weekly_Sales, date range, repeated stores</td></tr>
+      <tr><td><a href="../stores%20data-set.csv">stores data-set.csv</a></td><td><code>stores data-set</code></td><td>Store</td><td>Store uniqueness, Type and Size</td></tr>
+    </tbody></table></div>
+    <div class="result"><strong>LMS checkpoint:</strong> after loading, the three table names should be visible in the Data/Fields area. Open each table in Data view and compare the visible columns and types with the source inventory above before continuing to cleaning.</div>
+
+    <div class="next"><a href="index.html">← Back to Start Here</a><a href="02-clean-and-standardise.html">Next: Clean and Standardise →</a></div>
+    <footer>Environment: Power Query / Table view · <a href="https://learn.microsoft.com/en-us/power-query/data-profiling-tools" target="_blank" rel="noreferrer">Microsoft: data profiling tools</a> · <a href="https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-query-overview" target="_blank" rel="noreferrer">Microsoft: Power BI Desktop query overview</a></footer>
+  </div></main>
+</div>
+</body>
+</html>
