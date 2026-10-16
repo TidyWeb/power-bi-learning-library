@@ -1,5 +1,8 @@
 # Power BI Learning Library
 
+## [🌐 Open the live site: https://tidyweb.github.io/power-bi-learning-library/ ↗](https://tidyweb.github.io/power-bi-learning-library/)
+
+
 An explanation-first Power BI learning guide built around the Code Institute retail exercise.
 
 ## Open the guide
